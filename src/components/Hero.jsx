@@ -162,9 +162,9 @@ export default function Hero({ onOpenQuoteModal }) {
               </div>
 
               {/* H1 (Max 2 lines, text-4xl md:text-5xl, fully visible and clear) */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-poppins text-white tracking-tight leading-[1.15] max-w-2xl [text-shadow:_0_2px_14px_rgba(0,0,0,0.85)]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-poppins text-white tracking-tight leading-[1.15] max-w-2xl drop-shadow-[0_4px_18px_rgba(0,0,0,0.9)] [text-shadow:_0_3px_16px_rgba(0,0,0,0.95)]">
                 Professional Security Guard <br className="hidden sm:inline" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 via-amber-300 to-gold-500">
+                <span className="text-white">
                   Services in Indore
                 </span>
               </h1>
@@ -174,13 +174,13 @@ export default function Hero({ onOpenQuoteModal }) {
                 Armed & unarmed guards for offices, factories, societies, banks, hospitals and events. Police-verified, uniformed and trained.
               </p>
 
-              {/* Two Buttons: "Get Free Quote" (Gold) and "Call Now" (Outline) */}
+              {/* Two Buttons: "Hire Guards" (Gold) and "Call Now" (Outline) */}
               <div className="flex flex-wrap items-center gap-3 pt-1">
                 <button
                   onClick={() => onOpenQuoteModal()}
                   className="px-6 sm:px-7 py-3 sm:py-3.5 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-xs sm:text-sm shadow-soft-gold hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                 >
-                  <span>Get Free Quote</span>
+                  <span>Hire Guards</span>
                   <ChevronRight className="w-4 h-4 text-navy-950" />
                 </button>
 
@@ -224,7 +224,7 @@ export default function Hero({ onOpenQuoteModal }) {
                     2-Hour Guard Dispatch
                   </span>
                   <h3 className="text-base sm:text-lg font-bold font-poppins text-navy-950 mt-1">
-                    Quick Security Callback
+                    Need Guards? Call Me Back
                   </h3>
                   <p className="text-[11px] text-slate-500">
                     Get an instant custom quote for your premises.
@@ -321,7 +321,7 @@ export default function Hero({ onOpenQuoteModal }) {
                         ) : (
                           <>
                             <Send className="w-3.5 h-3.5" />
-                            <span>Get Callback</span>
+                            <span>Request Call</span>
                           </>
                         )}
                       </button>
@@ -347,7 +347,7 @@ export default function Hero({ onOpenQuoteModal }) {
               Immediate Response
             </span>
             <h3 className="text-base font-bold font-poppins text-navy-950 mt-1">
-              Request Security Guard Callback
+              Need Guards? Call Me Back
             </h3>
           </div>
 
@@ -402,7 +402,7 @@ export default function Hero({ onOpenQuoteModal }) {
               disabled={isSubmitting}
               className="w-full py-2.5 rounded-xl bg-gold-500 text-navy-950 font-bold text-xs shadow"
             >
-              Get Callback
+              Request Call
             </button>
           </form>
         </div>

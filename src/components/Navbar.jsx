@@ -90,8 +90,8 @@ export default function Navbar({ onOpenQuoteModal }) {
             </div>
           </a>
 
-          {/* Desktop Nav Links - Single line, 15px font, whitespace-nowrap */}
-          <div className="hidden lg:flex items-center gap-1 xl:gap-1.5 flex-nowrap">
+          {/* Desktop Nav Links - Single line, tight gap, whitespace-nowrap */}
+          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 flex-nowrap">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -99,7 +99,7 @@ export default function Navbar({ onOpenQuoteModal }) {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`px-2.5 py-1.5 rounded-lg text-[15px] font-medium whitespace-nowrap transition-all duration-200 ${
+                  className={`px-2 xl:px-2.5 py-1.5 rounded-lg text-[13.5px] xl:text-[14.5px] font-medium whitespace-nowrap transition-all duration-200 ${
                     isActive
                       ? 'text-gold-400 bg-white/5 font-semibold'
                       : 'text-slate-200 hover:text-gold-400 hover:bg-white/5'
@@ -111,13 +111,13 @@ export default function Navbar({ onOpenQuoteModal }) {
             })}
           </div>
 
-          {/* Right Action Buttons - 24x7 Help removed from nav, single line gold button */}
+          {/* Right Action Buttons - single line gold button */}
           <div className="hidden sm:flex items-center flex-shrink-0">
             <button
               onClick={() => onOpenQuoteModal()}
               className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold text-sm whitespace-nowrap shadow-soft-gold hover:shadow-lg hover:shadow-gold-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center gap-1.5"
             >
-              <span>Get Free Quote</span>
+              <span>Hire Guards</span>
               <ChevronRight className="w-4 h-4 flex-shrink-0" />
             </button>
           </div>
@@ -128,7 +128,7 @@ export default function Navbar({ onOpenQuoteModal }) {
               onClick={() => onOpenQuoteModal()}
               className="px-3 py-1.5 rounded-lg bg-gold-500 text-navy-950 font-bold text-xs whitespace-nowrap shadow"
             >
-              Quote
+              Hire
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -166,7 +166,7 @@ export default function Navbar({ onOpenQuoteModal }) {
               }}
               className="w-full py-3 rounded-xl bg-gold-500 text-navy-950 font-bold text-center text-sm shadow-soft-gold"
             >
-              Get Free Instant Quote
+              Hire Guards
             </button>
             <a
               href={`tel:${BRAND.phone}`}

@@ -22,6 +22,7 @@ export const NAV_LINKS = [
   { name: "Home", href: "#hero" },
   { name: "Services", href: "#services" },
   { name: "Why Us", href: "#why-us" },
+  { name: "Training", href: "#training" },
   { name: "Process", href: "#how-it-works" },
   { name: "Industries", href: "#industries" },
   { name: "Plans", href: "#engagement-models" },
@@ -259,7 +260,7 @@ export const ENGAGEMENT_MODELS = [
       "Weekly on-site Field Officer inspections",
       "Replacement guard within 2 hours of notice",
     ],
-    ctaText: "Request Day Shift Quote",
+    ctaText: "Hire Guards",
   },
   {
     id: "night",
@@ -275,7 +276,7 @@ export const ENGAGEMENT_MODELS = [
       "Direct SOS telemetry with 24x7 Control Room",
       "Strict anti-sleep duty rotation SOPs",
     ],
-    ctaText: "Request Night Shift Quote",
+    ctaText: "Hire Guards",
   },
   {
     id: "round-clock",
@@ -292,7 +293,7 @@ export const ENGAGEMENT_MODELS = [
       "Full statutory PF, ESIC & wage audit report monthly",
       "Priority 1-hour fast emergency response vehicle",
     ],
-    ctaText: "Request 24x7 Quote",
+    ctaText: "Hire Guards",
   },
 ];
 

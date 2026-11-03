@@ -4,7 +4,7 @@ import { ShieldCheck, Send, CheckCircle2, AlertCircle, Loader2, Sparkles } from 
 import { SERVICES, BRAND } from '../data';
 
 export default function LeadForm({
-  title = "Get Instant Free Quote",
+  title = "Hire Guards",
   subtitle = "PSARA Licensed • 2-Hour Response Time",
   initialService = "",
   variant = "card", // "card" | "hero" | "modal"
@@ -546,7 +546,7 @@ export default function LeadForm({
                 ) : (
                   <>
                     <ShieldCheck className="w-4 h-4 text-navy-950" />
-                    <span>Request Custom Quote & Survey</span>
+                    <span>Hire Guards</span>
                     <Send className="w-3.5 h-3.5 ml-1" />
                   </>
                 )}

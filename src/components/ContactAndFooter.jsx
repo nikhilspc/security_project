@@ -162,7 +162,7 @@ export default function ContactAndFooter({
                 onClick={() => onOpenQuoteModal()}
                 className="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-sm shadow-soft-gold hover:shadow-xl hover:scale-[1.02] transition-all whitespace-nowrap"
               >
-                Get Free Site Quote
+                Hire Guards
               </button>
             </div>
           </div>
@@ -475,7 +475,7 @@ export default function ContactAndFooter({
           onClick={() => onOpenQuoteModal()}
           className="py-2.5 rounded-xl bg-gold-500 text-navy-950 text-xs font-bold flex items-center justify-center gap-1 shadow-soft-gold"
         >
-          <span>Get Quote</span>
+          <span>Hire Guards</span>
         </button>
       </div>
 
@@ -511,7 +511,7 @@ export default function ContactAndFooter({
               <LeadForm
                 variant="modal"
                 initialService={modalInitialService}
-                title="Request Free Guard Quote"
+                title="Hire Guards"
                 subtitle="Fast callback • 100% PSARA compliant proposal"
                 onSuccessClose={onCloseQuoteModal}
               />

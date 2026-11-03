@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ServicesAndFeatures from './components/ServicesAndFeatures';
+import Training from './components/Training';
 import ProcessAndTrust from './components/ProcessAndTrust';
 import ContactAndFooter from './components/ContactAndFooter';
 
@@ -29,6 +30,9 @@ export default function App() {
 
         {/* 3. Counters & Marquee, 4. Services (8 cards), 5. Why Choose Us (6 tiles) */}
         <ServicesAndFeatures onSelectService={handleOpenQuoteModal} />
+
+        {/* Our Training Section */}
+        <Training onOpenQuoteModal={handleOpenQuoteModal} />
 
         {/* 6. How It Works (4 steps), 7. Industries (icon grid), 8. Engagement Models (3 cards), 9. Testimonials (4 items), 10. Certifications */}
         <ProcessAndTrust onOpenQuoteModal={handleOpenQuoteModal} />
