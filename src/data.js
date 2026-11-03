@@ -23,6 +23,15 @@ export const NAV_LINKS = [
   { name: "Services", href: "#services" },
   { name: "Why Us", href: "#why-us" },
   { name: "Training", href: "#training" },
+  { name: "Industries", href: "#industries" },
+  { name: "Contact", href: "#contact" },
+];
+
+export const FOOTER_LINKS = [
+  { name: "Home", href: "#hero" },
+  { name: "Services", href: "#services" },
+  { name: "Why Us", href: "#why-us" },
+  { name: "Training", href: "#training" },
   { name: "Process", href: "#how-it-works" },
   { name: "Industries", href: "#industries" },
   { name: "Plans", href: "#engagement-models" },

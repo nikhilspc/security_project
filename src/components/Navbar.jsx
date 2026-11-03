@@ -38,33 +38,24 @@ export default function Navbar({ onOpenQuoteModal }) {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Mini Bar */}
-      <div className="bg-navy-950 text-slate-300 text-xs py-1.5 px-4 border-b border-white/5 hidden md:block">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-gold-400 font-medium">
-              <Award className="w-3.5 h-3.5" />
-              <span>PSARA Licensed Agency: {BRAND.licenseNumber}</span>
-            </span>
-            <span className="flex items-center gap-1.5 text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>24x7 Control Room Active in Indore, M.P.</span>
-            </span>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href={`mailto:${BRAND.email}`} className="hover:text-gold-400 transition-colors flex items-center gap-1">
-              <Mail className="w-3.5 h-3.5 text-gold-400" />
-              <span>{BRAND.email}</span>
-            </a>
-            <a href={`tel:${BRAND.phone}`} className="text-gold-400 font-semibold hover:underline flex items-center gap-1">
-              <Phone className="w-3.5 h-3.5" />
-              <span>Hotline: {BRAND.phoneFormatted}</span>
-            </a>
-          </div>
+      {/* 1. TOP BAR (slim, 36px, hidden on mobile) */}
+      <div className="bg-navy-950 text-slate-300 text-xs h-9 border-b border-white/10 hidden md:flex items-center px-4">
+        <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
+          <span className="flex items-center gap-2 text-slate-200 font-medium">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>PSARA Licensed • 24x7 Control Room</span>
+          </span>
+          <a
+            href={`tel:${BRAND.phone}`}
+            className="text-gold-400 font-semibold hover:underline flex items-center gap-1.5"
+          >
+            <Phone className="w-3.5 h-3.5" />
+            <span>{BRAND.phoneFormatted}</span>
+          </a>
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
+      {/* 2. MAIN NAVBAR (72px, solid navy, sticky) */}
       <nav
         className={`w-full h-[72px] transition-all duration-300 flex items-center bg-navy-950 border-b border-white/10 ${
           isScrolled ? 'shadow-soft-navy bg-navy-950/98 backdrop-blur-md' : 'bg-navy-950'
@@ -90,8 +81,8 @@ export default function Navbar({ onOpenQuoteModal }) {
             </div>
           </a>
 
-          {/* Desktop Nav Links - Single line, tight gap, whitespace-nowrap */}
-          <div className="hidden lg:flex items-center gap-0.5 xl:gap-1.5 flex-nowrap">
+          {/* Desktop Nav Links (6 links only, 15px font, generous spacing, single line) */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 flex-nowrap">
             {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.href.substring(1);
               return (
@@ -99,10 +90,10 @@ export default function Navbar({ onOpenQuoteModal }) {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`px-2 xl:px-2.5 py-1.5 rounded-lg text-[13.5px] xl:text-[14.5px] font-medium whitespace-nowrap transition-all duration-200 ${
+                  className={`text-[15px] font-medium whitespace-nowrap transition-colors duration-200 ${
                     isActive
-                      ? 'text-gold-400 bg-white/5 font-semibold'
-                      : 'text-slate-200 hover:text-gold-400 hover:bg-white/5'
+                      ? 'text-gold-400 font-semibold'
+                      : 'text-slate-200 hover:text-gold-400'
                   }`}
                 >
                   {link.name}
@@ -111,11 +102,11 @@ export default function Navbar({ onOpenQuoteModal }) {
             })}
           </div>
 
-          {/* Right Action Buttons - single line gold button */}
+          {/* Right Action: Gold "Hire Guards" Button (height 52px, hover lift 2px) */}
           <div className="hidden sm:flex items-center flex-shrink-0">
             <button
               onClick={() => onOpenQuoteModal()}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold text-sm whitespace-nowrap shadow-soft-gold hover:shadow-lg hover:shadow-gold-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center gap-1.5"
+              className="h-[52px] px-6 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold text-sm whitespace-nowrap shadow-soft-gold hover:shadow-lg hover:shadow-gold-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2"
             >
               <span>Hire Guards</span>
               <ChevronRight className="w-4 h-4 flex-shrink-0" />
@@ -126,7 +117,7 @@ export default function Navbar({ onOpenQuoteModal }) {
           <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={() => onOpenQuoteModal()}
-              className="px-3 py-1.5 rounded-lg bg-gold-500 text-navy-950 font-bold text-xs whitespace-nowrap shadow"
+              className="px-3.5 py-1.5 rounded-lg bg-gold-500 text-navy-950 font-bold text-xs whitespace-nowrap shadow"
             >
               Hire
             </button>

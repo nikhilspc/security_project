@@ -18,7 +18,7 @@ import {
   Share2,
 } from 'lucide-react';
 import LeadForm from './LeadForm';
-import { BRAND, NAV_LINKS, SERVICES, FAQS } from '../data';
+import { BRAND, NAV_LINKS, FOOTER_LINKS, SERVICES, FAQS } from '../data';
 
 export default function ContactAndFooter({
   isQuoteModalOpen,
@@ -333,8 +333,8 @@ export default function ContactAndFooter({
             {/* Col 2: Quick Links */}
             <div>
               <h5 className="font-poppins font-bold text-white text-sm mb-4">Quick Navigation</h5>
-              <ul className="space-y-2.5 text-xs">
-                {NAV_LINKS.slice(0, 6).map((link) => (
+              <ul className="space-y-2 text-xs">
+                {(FOOTER_LINKS || NAV_LINKS).map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
@@ -402,8 +402,8 @@ export default function ContactAndFooter({
         </div>
       </footer>
 
-      {/* EXTRAS: Floating WhatsApp + Call + Scroll to top */}
-      <div className="fixed bottom-20 sm:bottom-6 right-5 z-40 flex flex-col gap-3">
+      {/* EXTRAS: Floating WhatsApp Button Only (Round phone removed as requested) */}
+      <div className="fixed bottom-6 right-5 z-40 flex flex-col gap-3">
         {/* Scroll to Top */}
         <AnimatePresence>
           {showScrollTop && (
@@ -412,25 +412,13 @@ export default function ContactAndFooter({
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               onClick={scrollToTop}
-              className="w-11 h-11 rounded-full bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 border border-white/20 shadow-xl flex items-center justify-center transition-colors"
+              className="w-10 h-10 rounded-full bg-navy-800 text-gold-400 hover:bg-gold-500 hover:text-navy-950 border border-white/20 shadow-xl flex items-center justify-center transition-colors"
               aria-label="Scroll to top"
             >
-              <ArrowUp className="w-5 h-5" />
+              <ArrowUp className="w-4 h-4" />
             </motion.button>
           )}
         </AnimatePresence>
-
-        {/* Floating Call Button */}
-        <a
-          href={`tel:${BRAND.phone}`}
-          className="w-12 h-12 rounded-full bg-navy-900 text-gold-400 hover:bg-navy-800 border-2 border-gold-500/60 shadow-xl flex items-center justify-center hover:scale-110 transition-transform group relative"
-          aria-label="Call 24x7 control room"
-        >
-          <Phone className="w-5 h-5" />
-          <span className="absolute right-14 whitespace-nowrap bg-navy-900 text-white text-xs px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity border border-white/10 shadow-lg pointer-events-none">
-            Call 24x7 Control Room
-          </span>
-        </a>
 
         {/* Floating WhatsApp Button */}
         <a
@@ -439,36 +427,24 @@ export default function ContactAndFooter({
           )}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 rounded-full bg-emerald-500 text-white hover:bg-emerald-600 shadow-xl flex items-center justify-center hover:scale-110 transition-transform group relative"
+          className="w-12 h-12 rounded-full bg-emerald-500 text-white hover:bg-emerald-600 shadow-xl flex items-center justify-center hover:scale-105 transition-transform group relative"
           aria-label="Chat on WhatsApp"
         >
           <MessageCircle className="w-6 h-6 fill-white" />
           <span className="absolute right-14 whitespace-nowrap bg-navy-900 text-white text-xs px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity border border-white/10 shadow-lg pointer-events-none">
-            Instant WhatsApp Inquiry
+            Chat on WhatsApp
           </span>
         </a>
       </div>
 
-      {/* EXTRAS: Mobile Sticky Bottom Bar */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-navy-950/98 backdrop-blur-md border-t border-navy-800 p-2.5 grid grid-cols-3 gap-2">
+      {/* EXTRAS: Mobile Slim Sticky Bottom Bar with "Call" and "Hire Guards" */}
+      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-navy-950/98 backdrop-blur-md border-t border-navy-800 p-2.5 grid grid-cols-2 gap-3">
         <a
           href={`tel:${BRAND.phone}`}
-          className="py-2.5 rounded-xl bg-navy-850 border border-white/10 text-white text-xs font-bold flex items-center justify-center gap-1.5"
+          className="py-2.5 rounded-xl bg-navy-850 border border-white/15 text-white text-xs font-bold flex items-center justify-center gap-1.5"
         >
           <Phone className="w-3.5 h-3.5 text-gold-400" />
           <span>Call</span>
-        </a>
-
-        <a
-          href={`https://wa.me/${BRAND.whatsapp}?text=${encodeURIComponent(
-            'Hello Sentinel Security, I need a quote for security guards in Indore.'
-          )}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold flex items-center justify-center gap-1.5"
-        >
-          <MessageCircle className="w-3.5 h-3.5 fill-white" />
-          <span>WhatsApp</span>
         </a>
 
         <button
