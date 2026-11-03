@@ -35,6 +35,7 @@ export default function Hero({ onOpenQuoteModal }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [refId, setRefId] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   // Auto-fading carousel (3 images, 6s slow fade)
   useEffect(() => {
@@ -49,6 +50,9 @@ export default function Hero({ onOpenQuoteModal }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (formErrors[name]) {
       setFormErrors((prev) => ({ ...prev, [name]: '' }));
+    }
+    if (submitError) {
+      setSubmitError('');
     }
   };
 
@@ -72,29 +76,37 @@ export default function Hero({ onOpenQuoteModal }) {
     if (!validateQuickForm()) return;
 
     setIsSubmitting(true);
-    await new Promise((res) => setTimeout(res, 800));
+    setSubmitError('');
 
-    const generatedId = `SEN-CB-${Math.floor(100000 + Math.random() * 900000)}`;
-    setRefId(generatedId);
-
-    const payload = {
-      ...formData,
-      id: generatedId,
-      source: 'Hero Corner Glass Callback',
-      timestamp: new Date().toISOString(),
-    };
-
-    console.log('[Sentinel Security] Quick Hero Callback:', payload);
     try {
-      const existing = JSON.parse(localStorage.getItem('sentinel_leads') || '[]');
-      existing.unshift(payload);
-      localStorage.setItem('sentinel_leads', JSON.stringify(existing));
-    } catch (err) {
-      console.warn('LocalStorage error:', err);
-    }
+      const submissionBody = new FormData();
+      submissionBody.append("access_key", import.meta.env.VITE_WEB3FORMS_KEY || "");
+      submissionBody.append("subject", "New Guard Enquiry - Sentinel Security");
+      submissionBody.append("from_name", "Sentinel Website");
+      submissionBody.append("botcheck", "");
+      submissionBody.append("name", formData.name.trim());
+      submissionBody.append("phone", `+91 ${formData.phone.trim()}`);
+      submissionBody.append("service", formData.service);
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionBody,
+      });
+
+      const data = await res.json();
+
+      if (data && data.success) {
+        const generatedId = `SEN-CB-${Math.floor(100000 + Math.random() * 900000)}`;
+        setRefId(generatedId);
+        setIsSubmitted(true);
+      } else {
+        setSubmitError("Something went wrong. Please call us on +91 98930 12345.");
+      }
+    } catch (err) {
+      setSubmitError("Something went wrong. Please call us on +91 98930 12345.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const currentHero = heroImages[currentSlide];
@@ -220,12 +232,16 @@ export default function Hero({ onOpenQuoteModal }) {
                     </div>
                     <h4 className="font-bold text-xs sm:text-sm text-white">Inquiry Received!</h4>
                     <p className="text-[11px] text-white/85">
-                      Our Area Officer will call you on <strong className="text-white">+91 {formData.phone}</strong> shortly.
+                      Thank you, <strong className="text-white">{formData.name}</strong>. Our team will call you on{' '}
+                      <strong className="text-white">+91 {formData.phone}</strong> soon.
                     </p>
                     <div className="text-[10px] text-white/70 font-mono">Ref: {refId}</div>
                     <button
                       type="button"
-                      onClick={() => setIsSubmitted(false)}
+                      onClick={() => {
+                        setIsSubmitted(false);
+                        setSubmitError('');
+                      }}
                       className="text-xs text-gold-400 font-bold hover:underline pt-0.5 block mx-auto"
                     >
                       Submit Another
@@ -289,16 +305,23 @@ export default function Hero({ onOpenQuoteModal }) {
                       </select>
                     </div>
 
+                    {/* Submit Error Message */}
+                    {submitError && (
+                      <div className="p-2 rounded-lg bg-rose-500/20 border border-rose-400/40 text-rose-200 text-[11px] leading-tight">
+                        {submitError}
+                      </div>
+                    )}
+
                     {/* Gold Button: h-10 (40px), rounded-lg, #F5B700 */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-10 px-3 rounded-lg bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 disabled:opacity-75"
+                      className="w-full h-10 px-3 rounded-lg bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 disabled:opacity-75 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
                           <Loader2 className="w-3.5 h-3.5 animate-spin text-navy-950" />
-                          <span>Connecting...</span>
+                          <span>Sending...</span>
                         </>
                       ) : (
                         <>

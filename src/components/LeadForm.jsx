@@ -28,6 +28,7 @@ export default function LeadForm({
   const [isSuccess, setIsSuccess] = useState(false);
   const [submissionId, setSubmissionId] = useState('');
   const [toastMessage, setToastMessage] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     if (initialService) {
@@ -73,6 +74,9 @@ export default function LeadForm({
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
+    if (submitError) {
+      setSubmitError('');
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -80,38 +84,55 @@ export default function LeadForm({
     if (!validate()) return;
 
     setIsSubmitting(true);
+    setSubmitError('');
 
-    // Simulate backend network delay (1.2 seconds)
-    await new Promise((res) => setTimeout(res, 1200));
-
-    const generatedId = `SEN-${Math.floor(100000 + Math.random() * 900000)}`;
-    setSubmissionId(generatedId);
-
-    const leadPayload = {
-      ...formData,
-      id: generatedId,
-      submittedAt: new Date().toISOString(),
-      timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-    };
-
-    // Output rules: console.log + save to localStorage mock
-    console.log('[Sentinel Security] New Lead Received:', leadPayload);
     try {
-      const existingLeads = JSON.parse(localStorage.getItem('sentinel_leads') || '[]');
-      existingLeads.unshift(leadPayload);
-      localStorage.setItem('sentinel_leads', JSON.stringify(existingLeads));
+      const submissionBody = new FormData();
+      submissionBody.append("access_key", import.meta.env.VITE_WEB3FORMS_KEY || "");
+      submissionBody.append("subject", "New Guard Enquiry - Sentinel Security");
+      submissionBody.append("from_name", "Sentinel Website");
+      submissionBody.append("botcheck", "");
+      submissionBody.append("name", formData.fullName.trim());
+      submissionBody.append("phone", `+91 ${formData.phone.trim()}`);
+      if (formData.email) {
+        submissionBody.append("email", formData.email.trim());
+      }
+      if (formData.company) {
+        submissionBody.append("company", formData.company.trim());
+      }
+      submissionBody.append("service", formData.serviceType);
+      submissionBody.append("number_of_guards", formData.guardCount);
+      submissionBody.append("shift", formData.shift);
+      submissionBody.append("city", formData.city);
+      if (formData.message) {
+        submissionBody.append("message", formData.message.trim());
+      }
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionBody,
+      });
+
+      const data = await res.json();
+
+      if (data && data.success) {
+        const generatedId = `SEN-${Math.floor(100000 + Math.random() * 900000)}`;
+        setSubmissionId(generatedId);
+        setIsSuccess(true);
+        setToastMessage(`Inquiry submitted! Ref #${generatedId}`);
+
+        // Auto dismiss toast after 4.5s
+        setTimeout(() => {
+          setToastMessage('');
+        }, 4500);
+      } else {
+        setSubmitError("Something went wrong. Please call us on +91 98930 12345.");
+      }
     } catch (err) {
-      console.warn('LocalStorage save failed:', err);
+      setSubmitError("Something went wrong. Please call us on +91 98930 12345.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setToastMessage(`Inquiry submitted! Ref #${generatedId}`);
-
-    // Auto dismiss toast after 4s
-    setTimeout(() => {
-      setToastMessage('');
-    }, 4500);
   };
 
   const resetForm = () => {
@@ -129,6 +150,7 @@ export default function LeadForm({
     });
     setIsSuccess(false);
     setErrors({});
+    setSubmitError('');
   };
 
   const shiftOptions = [
@@ -213,9 +235,8 @@ export default function LeadForm({
                   variant === 'card' ? 'text-slate-600' : 'text-slate-300'
                 }`}
               >
-                Thank you, <strong className="font-semibold">{formData.fullName}</strong>. Our Area Security Officer
-                will call you on <strong className="font-semibold">+91 {formData.phone}</strong> within 120 minutes with a
-                custom guard deployment proposal.
+                Thank you, <strong className="font-semibold">{formData.fullName}</strong>. Our team will call you on{' '}
+                <strong className="font-semibold">+91 {formData.phone}</strong> soon.
               </p>
 
               <div
@@ -532,6 +553,14 @@ export default function LeadForm({
                 {errors.consent && <p className="text-rose-400 text-[10px] mt-0.5">{errors.consent}</p>}
               </div>
 
+              {/* Submit Error Message */}
+              {submitError && (
+                <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-500 text-xs flex items-center gap-2">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  <span>{submitError}</span>
+                </div>
+              )}
+
               {/* Submit Button */}
               <button
                 type="submit"
@@ -541,7 +570,7 @@ export default function LeadForm({
                 {isSubmitting ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-navy-950" />
-                    <span>Processing Security Dispatch...</span>
+                    <span>Sending...</span>
                   </>
                 ) : (
                   <>
