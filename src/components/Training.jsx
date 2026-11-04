@@ -118,7 +118,7 @@ export default function Training({ onOpenQuoteModal }) {
   };
 
   return (
-    <section id="training" className="py-20 bg-white relative scroll-mt-24 border-b border-slate-100">
+    <section id="training" className="py-20 bg-white relative overflow-hidden scroll-mt-24 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 1. Heading "OUR TRAINING" with gold underline bar */}
@@ -204,7 +204,7 @@ export default function Training({ onOpenQuoteModal }) {
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-navy-950 border border-slate-200 shadow-lg flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 hover:border-gold-500 transition-colors z-20 focus:outline-none"
+                  className="absolute left-1 sm:-left-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-navy-950 border border-slate-200 shadow-lg flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 hover:border-gold-500 transition-colors z-20 focus:outline-none"
                   aria-label="Previous training image"
                 >
                   <ChevronLeft className="w-5 h-5" />
@@ -212,7 +212,7 @@ export default function Training({ onOpenQuoteModal }) {
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-navy-950 border border-slate-200 shadow-lg flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 hover:border-gold-500 transition-colors z-20 focus:outline-none"
+                  className="absolute right-1 sm:-right-5 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white text-navy-950 border border-slate-200 shadow-lg flex items-center justify-center hover:bg-gold-500 hover:text-navy-950 hover:border-gold-500 transition-colors z-20 focus:outline-none"
                   aria-label="Next training image"
                 >
                   <ChevronRight className="w-5 h-5" />
@@ -274,7 +274,7 @@ export default function Training({ onOpenQuoteModal }) {
           <button
             type="button"
             onClick={() => onOpenQuoteModal()}
-            className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-sm sm:text-base shadow-soft-gold hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2"
+            className="w-full sm:w-auto min-h-[48px] h-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-sm sm:text-base shadow-soft-gold hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all inline-flex items-center justify-center gap-2"
           >
             <span>Hire Guards</span>
             <ChevronRight className="w-4 h-4" />

@@ -81,9 +81,9 @@ export default function ServicesAndFeatures({ onSelectService }) {
         </div>
 
         {/* Client Logo Marquee */}
-        <div className="mt-12 bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200 overflow-hidden">
+        <div className="mt-12 bg-white rounded-2xl p-4 sm:p-8 shadow-sm border border-slate-200 overflow-hidden">
           <div className="text-center mb-6">
-            <span className="text-xs font-bold text-slate-600 uppercase tracking-widest">
+            <span className="text-xs font-bold text-slate-600 uppercase tracking-widest break-words">
               Trusted by 120+ Enterprises, Manufacturing Units & RWAs in Central India
             </span>
           </div>
@@ -93,7 +93,7 @@ export default function ServicesAndFeatures({ onSelectService }) {
               {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((client, i) => (
                 <div
                   key={i}
-                  className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-700 hover:text-navy-900 hover:border-gold-500/50 hover:bg-white transition-all cursor-default group"
+                  className="flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-700 hover:text-navy-900 hover:border-gold-500/50 hover:bg-white transition-all cursor-default group flex-shrink-0"
                 >
                   <ShieldAlert className="w-4 h-4 text-gold-500 group-hover:scale-110 transition-transform" />
                   <span className="font-poppins font-semibold text-xs sm:text-sm tracking-wide">
@@ -107,7 +107,7 @@ export default function ServicesAndFeatures({ onSelectService }) {
       </section>
 
       {/* SECTION 4: Services (8 Cards) */}
-      <section id="services" className="py-20 lg:py-28 bg-slate-50">
+      <section id="services" className="py-20 lg:py-28 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Section Header */}
@@ -116,18 +116,18 @@ export default function ServicesAndFeatures({ onSelectService }) {
               <Sparkles className="w-3.5 h-3.5 text-gold-600" />
               <span>Specialized Security Personnel</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-poppins text-navy-950 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-poppins text-navy-950 tracking-tight break-words">
               Comprehensive Security & <br />
               <span className="text-gold-600">Manpower Services</span>
             </h2>
-            <p className="mt-4 text-slate-600 text-base sm:text-lg">
+            <p className="mt-4 text-slate-600 text-base sm:text-lg break-words">
               From corporate campuses to heavy industrial units in Pithampur and luxury residences in Indore, 
               we deploy battle-tested guards equipped with technology, rigorous training, and statutory compliance.
             </p>
           </div>
 
-          {/* 8 Service Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+          {/* 8 Service Cards Grid: grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
             {SERVICES.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -181,7 +181,7 @@ export default function ServicesAndFeatures({ onSelectService }) {
                 <div className="p-5 sm:p-6 pt-0">
                   <button
                     onClick={() => onSelectService(service.title)}
-                    className="w-full py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-gold-500 hover:text-navy-950 text-slate-800 font-semibold text-xs font-poppins transition-all duration-200 flex items-center justify-center gap-2 group/btn"
+                    className="w-full min-h-[44px] h-auto py-2.5 px-3 rounded-xl bg-slate-100 hover:bg-gold-500 hover:text-navy-950 text-slate-800 font-semibold text-xs font-poppins transition-all duration-200 flex items-center justify-center gap-2 group/btn"
                   >
                     <span>Request This Service</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
@@ -192,8 +192,8 @@ export default function ServicesAndFeatures({ onSelectService }) {
           </div>
 
           {/* Bottom Custom Requirements CTA Banner */}
-          <div className="mt-12 bg-navy-900 text-white rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-navy-800 shadow-xl">
-            <div className="space-y-1 text-center sm:text-left">
+          <div className="mt-12 bg-navy-900 text-white rounded-2xl p-5 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 border border-navy-800 shadow-xl overflow-hidden">
+            <div className="space-y-1 text-center sm:text-left min-w-0 break-words">
               <h4 className="text-lg sm:text-xl font-bold font-poppins text-white">
                 Need a Custom Security Assessment for Your Factory or Township?
               </h4>
@@ -203,7 +203,7 @@ export default function ServicesAndFeatures({ onSelectService }) {
             </div>
             <button
               onClick={() => onSelectService("Custom Enterprise Assessment")}
-              className="px-6 py-3 rounded-xl bg-gold-500 text-navy-950 font-bold text-xs sm:text-sm shadow-soft-gold hover:bg-gold-400 transition whitespace-nowrap"
+              className="w-full sm:w-auto min-h-[44px] h-auto px-6 py-3 rounded-xl bg-gold-500 text-navy-950 font-bold text-xs sm:text-sm shadow-soft-gold hover:bg-gold-400 transition text-center flex-shrink-0"
             >
               Book Free Site Survey
             </button>
@@ -225,20 +225,20 @@ export default function ServicesAndFeatures({ onSelectService }) {
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold-500/20 text-gold-400 border border-gold-500/30 text-xs font-bold tracking-widest uppercase mb-3">
               The Sentinel Standard
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-poppins text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-poppins text-white tracking-tight break-words">
               Why Central India Trusts <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-amber-300">
                 Sentinel Security Services
               </span>
             </h2>
-            <p className="mt-4 text-slate-300 text-base sm:text-lg">
+            <p className="mt-4 text-slate-300 text-base sm:text-lg break-words">
               We bridge disciplined military vigilance with cutting-edge tech surveillance. Zero tolerance 
               for negligence, 100% legal compliances, and immediate accountability.
             </p>
           </div>
 
-          {/* 6 Tiles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* 6 Tiles Grid: grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {WHY_CHOOSE_US.map((item, idx) => {
               const Icon = iconMap[item.iconName] || ShieldCheck;
               return (

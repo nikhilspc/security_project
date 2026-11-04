@@ -112,9 +112,9 @@ export default function Hero({ onOpenQuoteModal }) {
   const currentHero = heroImages[currentSlide];
 
   return (
-    <div id="hero" className="relative w-full scroll-mt-28">
-      {/* 3. HERO BANNER: min-h-[620px] md:min-h-[660px], pb-24 md:pb-28 for trust strip clearance */}
-      <section className="relative w-full min-h-[620px] md:min-h-[660px] lg:h-[82vh] lg:max-h-[760px] overflow-hidden flex flex-col justify-center pt-24 sm:pt-28 pb-24 md:pb-28">
+    <div id="hero" className="relative w-full overflow-hidden scroll-mt-28">
+      {/* 3. HERO BANNER: min-h-[580px] sm:min-h-[620px] md:min-h-[660px], pb-20 sm:pb-24 md:pb-28 for trust strip clearance */}
+      <section className="relative w-full min-h-[580px] sm:min-h-[620px] md:min-h-[660px] lg:h-[82svh] lg:max-h-[760px] overflow-hidden flex flex-col justify-center pt-24 sm:pt-28 pb-20 sm:pb-24 md:pb-28">
         
         {/* Full-bleed Photo with Slow Fade (object-position: right center) */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-navy-950">
@@ -149,51 +149,51 @@ export default function Hero({ onOpenQuoteModal }) {
         </div>
 
         {/* HERO CONTAINER: Left text content + Bottom-right corner glass form */}
-        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full min-w-0">
           {/* LEFT CONTENT: max-w-xl so it does not stretch across photo, 16-20px spacing */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="max-w-xl space-y-4 sm:space-y-5"
+            className="max-w-xl space-y-4 sm:space-y-5 min-w-0 break-words"
           >
             {/* a) Eyebrow text (not a pill): uppercase, tracking-widest, text-sm */}
             <span className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-gold-400 block">
               PSARA LICENSED SECURITY AGENCY
             </span>
 
-            {/* b) H1: text-2xl md:text-3xl lg:text-4xl (max 40px), bold, leading-snug, fits 2 lines */}
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold font-poppins text-white leading-snug tracking-tight max-w-xl">
+            {/* b) H1: text-2xl sm:text-3xl lg:text-4xl, bold, leading-snug, fits 2 lines */}
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold font-poppins text-white leading-snug tracking-tight max-w-xl break-words">
               Trusted <span className="text-gold-400">Security Guards</span> for Your Business & Home
             </h1>
 
             {/* c) Short line: text-base md:text-lg */}
-            <p className="text-base md:text-lg text-slate-200 max-w-lg leading-relaxed font-normal">
+            <p className="text-base md:text-lg text-slate-200 max-w-lg leading-relaxed font-normal break-words">
               Police-verified, trained and uniformed guards, deployed within 24 hours across Indore.
             </p>
 
-            {/* d) Two buttons side by side (height 52px, rounded-xl, 2px hover lift) */}
-            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+            {/* d) Two buttons side by side (min-w-[140px], flex-1, rounded-xl, 2px hover lift) */}
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1 w-full">
               <button
                 type="button"
                 onClick={() => onOpenQuoteModal()}
-                className="h-[52px] px-6 sm:px-7 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-sm sm:text-base shadow-soft-gold hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2"
+                className="flex-1 min-w-[140px] min-h-[48px] sm:min-h-[52px] h-auto px-5 sm:px-7 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-sm sm:text-base shadow-soft-gold hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2"
               >
                 <span>Hire Guards</span>
-                <ChevronRight className="w-4 h-4 text-navy-950" />
+                <ChevronRight className="w-4 h-4 text-navy-950 flex-shrink-0" />
               </button>
 
               <a
                 href={`tel:${BRAND.phone}`}
                 title={BRAND.phoneFormatted}
-                className="h-[52px] px-6 sm:px-7 rounded-xl border-2 border-white/70 hover:border-gold-400 text-white hover:text-gold-400 font-bold font-poppins text-sm sm:text-base hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center"
+                className="flex-1 min-w-[140px] min-h-[48px] sm:min-h-[52px] h-auto px-5 sm:px-7 rounded-xl border-2 border-white/70 hover:border-gold-400 text-white hover:text-gold-400 font-bold font-poppins text-sm sm:text-base hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center"
               >
                 <span>Call Now</span>
               </a>
             </div>
 
             {/* e) Visible metrics line: text-white, font-medium, gold numbers, border-white/20, pt-4 */}
-            <div className="pt-3.5 border-t border-white/20 text-xs sm:text-sm md:text-base text-white font-medium flex flex-wrap items-center gap-x-2 gap-y-1">
+            <div className="pt-3.5 border-t border-white/20 text-xs sm:text-sm md:text-base text-white font-medium flex flex-wrap items-center gap-x-3 gap-y-1.5">
               <span><strong className="text-gold-400 font-semibold">500+</strong> Guards</span>
               <span className="text-white/40">•</span>
               <span><strong className="text-gold-400 font-semibold">120+</strong> Clients</span>
@@ -207,7 +207,7 @@ export default function Hero({ onOpenQuoteModal }) {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="mt-6 lg:mt-0 lg:absolute lg:right-6 xl:right-10 lg:bottom-24 z-20 w-full max-w-sm lg:max-w-none lg:w-[270px] xl:w-[280px] mx-auto lg:mx-0"
+            className="mt-6 lg:mt-0 lg:absolute lg:right-6 xl:right-10 lg:bottom-24 z-20 w-full max-w-md lg:max-w-none lg:w-[270px] xl:w-[280px] mx-auto lg:mx-0 min-w-0"
           >
             <div className="w-full p-4 rounded-xl bg-black/10 backdrop-blur-md bg-white/10 border border-white/25 shadow-xl shadow-black/20 text-white">
               {/* Form Header */}
@@ -249,7 +249,7 @@ export default function Hero({ onOpenQuoteModal }) {
                   </motion.div>
                 ) : (
                   <form onSubmit={handleQuickFormSubmit} className="space-y-2">
-                    {/* Name input (h-38px, text-sm) */}
+                    {/* Name input (min-h-[38px], text-sm) */}
                     <div>
                       <input
                         type="text"
@@ -257,7 +257,7 @@ export default function Hero({ onOpenQuoteModal }) {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your Full Name *"
-                        className={`w-full h-[38px] px-3 text-sm rounded-lg bg-white/15 border text-white placeholder-white/70 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40 outline-none transition [&:-webkit-autofill]:[box-shadow:0_0_0_1000px_rgba(15,25,40,0.85)_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white] ${
+                        className={`w-full min-h-[38px] h-auto px-3 py-1.5 text-sm rounded-lg bg-white/15 border text-white placeholder-white/70 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40 outline-none transition [&:-webkit-autofill]:[box-shadow:0_0_0_1000px_rgba(15,25,40,0.85)_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white] ${
                           formErrors.name ? 'border-rose-400 ring-1 ring-rose-400' : 'border-white/30'
                         }`}
                       />
@@ -266,7 +266,7 @@ export default function Hero({ onOpenQuoteModal }) {
                       )}
                     </div>
 
-                    {/* Phone input with +91 (h-38px, text-sm) */}
+                    {/* Phone input with +91 (min-h-[38px], text-sm) */}
                     <div>
                       <div className="relative">
                         <span className="absolute left-2.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-white/80 select-none">
@@ -279,7 +279,7 @@ export default function Hero({ onOpenQuoteModal }) {
                           value={formData.phone}
                           onChange={handleInputChange}
                           placeholder="Mobile Number *"
-                          className={`w-full h-[38px] pl-10 pr-3 text-sm rounded-lg bg-white/15 border text-white placeholder-white/70 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40 outline-none transition [&:-webkit-autofill]:[box-shadow:0_0_0_1000px_rgba(15,25,40,0.85)_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white] ${
+                          className={`w-full min-h-[38px] h-auto pl-10 pr-3 py-1.5 text-sm rounded-lg bg-white/15 border text-white placeholder-white/70 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40 outline-none transition [&:-webkit-autofill]:[box-shadow:0_0_0_1000px_rgba(15,25,40,0.85)_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white] ${
                             formErrors.phone ? 'border-rose-400 ring-1 ring-rose-400' : 'border-white/30'
                           }`}
                         />
@@ -289,13 +289,13 @@ export default function Hero({ onOpenQuoteModal }) {
                       )}
                     </div>
 
-                    {/* Service Dropdown (h-38px, text-sm, readable options) */}
+                    {/* Service Dropdown (min-h-[38px], text-sm, readable options) */}
                     <div>
                       <select
                         name="service"
                         value={formData.service}
                         onChange={handleInputChange}
-                        className="w-full h-[38px] px-2.5 text-sm rounded-lg bg-white/15 border border-white/30 text-white focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40 outline-none transition cursor-pointer"
+                        className="w-full min-h-[38px] h-auto px-2.5 py-1.5 text-sm rounded-lg bg-white/15 border border-white/30 text-white focus:border-amber-400 focus:ring-2 focus:ring-amber-400/40 outline-none transition cursor-pointer"
                       >
                         {SERVICES.map((s) => (
                           <option key={s.id} value={s.title} className="text-slate-900 bg-white">
@@ -307,25 +307,25 @@ export default function Hero({ onOpenQuoteModal }) {
 
                     {/* Submit Error Message */}
                     {submitError && (
-                      <div className="p-2 rounded-lg bg-rose-500/20 border border-rose-400/40 text-rose-200 text-[11px] leading-tight">
+                      <div className="p-2 rounded-lg bg-rose-500/20 border border-rose-400/40 text-rose-200 text-[11px] leading-tight break-words">
                         {submitError}
                       </div>
                     )}
 
-                    {/* Gold Button: h-10 (40px), rounded-lg, #F5B700 */}
+                    {/* Gold Button: min-h-[40px], rounded-lg, #F5B700 */}
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-10 px-3 rounded-lg bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 disabled:opacity-75 disabled:cursor-not-allowed"
+                      className="w-full min-h-[40px] h-auto py-2 px-3 rounded-lg bg-gold-500 hover:bg-gold-400 text-navy-950 font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-1.5 disabled:opacity-75 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
-                          <Loader2 className="w-3.5 h-3.5 animate-spin text-navy-950" />
+                          <Loader2 className="w-3.5 h-3.5 animate-spin text-navy-950 flex-shrink-0" />
                           <span>Sending...</span>
                         </>
                       ) : (
                         <>
-                          <Send className="w-3.5 h-3.5 text-navy-950" />
+                          <Send className="w-3.5 h-3.5 text-navy-950 flex-shrink-0" />
                           <span>Request Call</span>
                         </>
                       )}
@@ -343,7 +343,7 @@ export default function Hero({ onOpenQuoteModal }) {
         </div>
 
         {/* Slider dots: small and sit at the bottom-right corner above the trust strip */}
-        <div className="absolute bottom-10 right-6 sm:bottom-12 sm:right-10 z-20 flex items-center gap-2">
+        <div className="absolute bottom-6 right-4 sm:bottom-12 sm:right-10 z-20 flex items-center gap-2">
           {heroImages.map((item, idx) => (
             <button
               key={item.src}
@@ -360,7 +360,7 @@ export default function Hero({ onOpenQuoteModal }) {
 
       {/* 4. TRUST STRIP: overlaps hero bottom by 32px, 4 items (title only), height ~72px */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 -mt-8">
-        <div className="bg-white rounded-2xl shadow-lg border border-slate-200/80 px-6 py-4 grid grid-cols-2 lg:grid-cols-4 gap-4 divide-y lg:divide-y-0 lg:divide-x divide-slate-100 items-center min-h-[72px]">
+        <div className="bg-white rounded-2xl shadow-lg border border-slate-200/80 px-4 sm:px-6 py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 divide-y sm:divide-y-0 lg:divide-x divide-slate-100 items-center min-h-[72px]">
           
           {/* Item 1 */}
           <div className="flex items-center gap-3 p-1">
@@ -373,7 +373,7 @@ export default function Hero({ onOpenQuoteModal }) {
           </div>
 
           {/* Item 2 */}
-          <div className="flex items-center gap-3 p-1 pt-3 lg:pt-1 lg:pl-6">
+          <div className="flex items-center gap-3 p-1 pt-3 sm:pt-1 lg:pl-6">
             <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
               <Clock className="w-5 h-5" />
             </div>
@@ -383,7 +383,7 @@ export default function Hero({ onOpenQuoteModal }) {
           </div>
 
           {/* Item 3 */}
-          <div className="flex items-center gap-3 p-1 pt-3 lg:pt-1 lg:pl-6">
+          <div className="flex items-center gap-3 p-1 pt-3 sm:pt-1 lg:pl-6">
             <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
               <Users className="w-5 h-5" />
             </div>
@@ -393,7 +393,7 @@ export default function Hero({ onOpenQuoteModal }) {
           </div>
 
           {/* Item 4 */}
-          <div className="flex items-center gap-3 p-1 pt-3 lg:pt-1 lg:pl-6">
+          <div className="flex items-center gap-3 p-1 pt-3 sm:pt-1 lg:pl-6">
             <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center flex-shrink-0">
               <BadgeCheck className="w-5 h-5" />
             </div>

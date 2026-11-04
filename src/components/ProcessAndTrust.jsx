@@ -79,7 +79,7 @@ export default function ProcessAndTrust({ onOpenQuoteModal }) {
           </div>
 
           {/* 4-Step Timeline */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
             {/* Connecting Line (Desktop) */}
             <div className="hidden lg:block absolute top-12 left-16 right-16 h-0.5 bg-gradient-to-r from-gold-400 via-gold-500 to-amber-600 z-0"></div>
 
@@ -246,7 +246,7 @@ export default function ProcessAndTrust({ onOpenQuoteModal }) {
                 <div className="mt-8 pt-6 border-t border-slate-200/20">
                   <button
                     onClick={() => onOpenQuoteModal(model.title)}
-                    className={`w-full py-3.5 rounded-xl font-bold font-poppins text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 ${
+                    className={`w-full min-h-[48px] h-auto py-3.5 rounded-xl font-bold font-poppins text-xs sm:text-sm transition-all shadow-md flex items-center justify-center gap-2 ${
                       model.popular
                         ? 'bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 hover:shadow-gold-500/30 hover:scale-[1.01]'
                         : 'bg-navy-900 text-white hover:bg-gold-500 hover:text-navy-950'
@@ -366,15 +366,15 @@ export default function ProcessAndTrust({ onOpenQuoteModal }) {
       </section>
 
       {/* SECTION 10: Certifications Badges (PSARA, ISO, PF/ESIC) */}
-      <section className="py-14 bg-slate-900 border-b border-navy-800 text-white">
+      <section className="py-14 bg-slate-900 border-b border-navy-800 text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <span className="text-xs font-bold text-gold-400 uppercase tracking-widest">
+            <span className="text-xs font-bold text-gold-400 uppercase tracking-widest break-words">
               Statutory Governance & Compliance Accreditations
             </span>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {CERTIFICATIONS.map((cert, cIdx) => (
               <div
                 key={cIdx}

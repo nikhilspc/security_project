@@ -20,7 +20,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-inter antialiased selection:bg-gold-500 selection:text-navy-950">
+    <div className="min-h-screen pb-24 sm:pb-0 bg-slate-50 text-slate-800 font-inter antialiased selection:bg-gold-500 selection:text-navy-950 overflow-x-hidden">
       {/* 1. Sticky Navbar */}
       <Navbar onOpenQuoteModal={handleOpenQuoteModal} />
 

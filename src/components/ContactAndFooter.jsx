@@ -147,9 +147,9 @@ export default function ContactAndFooter({
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
               <a
                 href={`tel:${BRAND.phone}`}
-                className="w-full sm:w-auto px-6 py-4 rounded-xl bg-navy-800 hover:bg-navy-700 text-white font-bold text-sm border border-white/20 flex items-center justify-center gap-3 transition-colors shadow-lg"
+                className="w-full sm:w-auto min-h-[48px] h-auto px-6 py-4 rounded-xl bg-navy-800 hover:bg-navy-700 text-white font-bold text-sm border border-white/20 flex items-center justify-center gap-3 transition-colors shadow-lg"
               >
-                <div className="w-8 h-8 rounded-full bg-gold-500 text-navy-950 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-gold-500 text-navy-950 flex items-center justify-center flex-shrink-0">
                   <Phone className="w-4 h-4 fill-navy-950" />
                 </div>
                 <div className="text-left">
@@ -160,7 +160,7 @@ export default function ContactAndFooter({
 
               <button
                 onClick={() => onOpenQuoteModal()}
-                className="w-full sm:w-auto px-7 py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-sm shadow-soft-gold hover:shadow-xl hover:scale-[1.02] transition-all whitespace-nowrap"
+                className="w-full sm:w-auto min-h-[48px] h-auto px-7 py-4 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold font-poppins text-sm shadow-soft-gold hover:shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center"
               >
                 Hire Guards
               </button>
@@ -297,10 +297,10 @@ export default function ContactAndFooter({
       </section>
 
       {/* SECTION 14: Footer */}
-      <footer className="bg-navy-950 text-slate-300 pt-16 pb-24 lg:pb-12 border-t border-navy-900">
+      <footer className="bg-navy-950 text-slate-300 pt-16 pb-24 lg:pb-12 border-t border-navy-900 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-navy-800">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 pb-12 border-b border-navy-800">
             
             {/* Col 1: Brand Info */}
             <div className="lg:col-span-2 space-y-4">
@@ -402,8 +402,8 @@ export default function ContactAndFooter({
         </div>
       </footer>
 
-      {/* EXTRAS: Floating WhatsApp Button Only (Round phone removed as requested) */}
-      <div className="fixed bottom-6 right-5 z-40 flex flex-col gap-3">
+      {/* EXTRAS: Floating WhatsApp Button (bottom-20 on mobile to clear sticky bottom bar) */}
+      <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-5 z-40 flex flex-col gap-3">
         {/* Scroll to Top */}
         <AnimatePresence>
           {showScrollTop && (
@@ -441,15 +441,15 @@ export default function ContactAndFooter({
       <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-navy-950/98 backdrop-blur-md border-t border-navy-800 p-2.5 grid grid-cols-2 gap-3">
         <a
           href={`tel:${BRAND.phone}`}
-          className="py-2.5 rounded-xl bg-navy-850 border border-white/15 text-white text-xs font-bold flex items-center justify-center gap-1.5"
+          className="min-h-[42px] h-auto py-2.5 px-3 rounded-xl bg-navy-850 border border-white/15 text-white text-xs font-bold flex items-center justify-center gap-1.5"
         >
-          <Phone className="w-3.5 h-3.5 text-gold-400" />
+          <Phone className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
           <span>Call</span>
         </a>
 
         <button
           onClick={() => onOpenQuoteModal()}
-          className="py-2.5 rounded-xl bg-gold-500 text-navy-950 text-xs font-bold flex items-center justify-center gap-1 shadow-soft-gold"
+          className="min-h-[42px] h-auto py-2.5 px-3 rounded-xl bg-gold-500 text-navy-950 text-xs font-bold flex items-center justify-center gap-1 shadow-soft-gold"
         >
           <span>Hire Guards</span>
         </button>
@@ -458,7 +458,7 @@ export default function ContactAndFooter({
       {/* EXTRAS: Quote Modal (opened by every "Get Quote" button) */}
       <AnimatePresence>
         {isQuoteModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -468,12 +468,12 @@ export default function ContactAndFooter({
               className="fixed inset-0 bg-navy-950/80 backdrop-blur-md"
             />
 
-            {/* Modal Content */}
+            {/* Modal Content: w-[calc(100%-2rem)] max-w-lg max-h-[90svh] overflow-y-auto */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative z-10 w-full max-w-xl my-8 bg-navy-900 rounded-3xl border border-white/15 shadow-2xl overflow-hidden"
+              className="relative z-10 w-[calc(100%-2rem)] max-w-lg max-h-[90svh] overflow-y-auto my-auto bg-navy-900 rounded-2xl sm:rounded-3xl border border-white/15 shadow-2xl"
             >
               {/* Close Button */}
               <button

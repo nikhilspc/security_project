@@ -66,16 +66,16 @@ export default function Navbar({ onOpenQuoteModal }) {
           <a
             href="#hero"
             onClick={(e) => handleLinkClick(e, '#hero')}
-            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none flex-shrink-0"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-w-0 flex-shrink"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-600 flex items-center justify-center shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform duration-200">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-600 flex items-center justify-center shadow-lg shadow-gold-500/20 group-hover:scale-105 transition-transform duration-200 flex-shrink-0">
               <Shield className="w-5 h-5 text-navy-950 fill-navy-950" />
             </div>
-            <div>
-              <span className="text-base sm:text-lg font-bold font-poppins tracking-tight text-white flex items-center gap-1 whitespace-nowrap">
+            <div className="min-w-0">
+              <span className="text-base sm:text-lg font-bold font-poppins tracking-tight text-white flex items-center gap-1 truncate">
                 Sentinel <span className="text-gold-400">Security</span>
               </span>
-              <p className="text-[10px] text-slate-300 font-medium tracking-wide uppercase whitespace-nowrap">
+              <p className="text-[10px] text-slate-300 font-medium tracking-wide uppercase whitespace-nowrap hidden sm:block">
                 Trained Guards • Trusted Protection
               </p>
             </div>
@@ -106,7 +106,7 @@ export default function Navbar({ onOpenQuoteModal }) {
           <div className="hidden sm:flex items-center flex-shrink-0">
             <button
               onClick={() => onOpenQuoteModal()}
-              className="h-[52px] px-6 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold text-sm whitespace-nowrap shadow-soft-gold hover:shadow-lg hover:shadow-gold-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2"
+              className="min-h-[52px] h-auto px-6 rounded-xl bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 font-bold text-sm whitespace-nowrap shadow-soft-gold hover:shadow-lg hover:shadow-gold-500/30 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center gap-2"
             >
               <span>Hire Guards</span>
               <ChevronRight className="w-4 h-4 flex-shrink-0" />
@@ -114,10 +114,10 @@ export default function Navbar({ onOpenQuoteModal }) {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex sm:hidden items-center gap-2">
+          <div className="flex sm:hidden items-center gap-2 flex-shrink-0">
             <button
               onClick={() => onOpenQuoteModal()}
-              className="px-3.5 py-1.5 rounded-lg bg-gold-500 text-navy-950 font-bold text-xs whitespace-nowrap shadow"
+              className="hidden min-[480px]:inline-flex px-3.5 py-1.5 rounded-lg bg-gold-500 text-navy-950 font-bold text-xs whitespace-nowrap shadow"
             >
               Hire
             </button>
@@ -134,7 +134,7 @@ export default function Navbar({ onOpenQuoteModal }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="sm:hidden fixed inset-x-0 top-[60px] bg-navy-900/98 backdrop-blur-xl border-b border-navy-800 shadow-2xl p-5 transition-all">
+        <div className="sm:hidden fixed inset-x-0 top-[72px] max-h-[calc(100svh-72px)] overflow-y-auto bg-navy-900/98 backdrop-blur-xl border-b border-navy-800 shadow-2xl p-5 transition-all">
           <div className="flex flex-col gap-1 pb-4 border-b border-white/10">
             {NAV_LINKS.map((link) => (
               <a

@@ -179,10 +179,10 @@ export default function LeadForm({
       <div
         className={`rounded-2xl transition-all ${
           variant === 'modal'
-            ? 'bg-navy-900 text-white p-6 sm:p-8'
+            ? 'bg-navy-900 text-white p-4 sm:p-6 md:p-8'
             : variant === 'hero'
-            ? 'glass-panel text-white p-6 sm:p-7 shadow-2xl shadow-navy-950/50'
-            : 'bg-white text-slate-800 p-6 sm:p-8 shadow-xl border border-slate-200'
+            ? 'glass-panel text-white p-4 sm:p-6 md:p-7 shadow-2xl shadow-navy-950/50'
+            : 'bg-white text-slate-800 p-4 sm:p-6 md:p-8 shadow-xl border border-slate-200'
         }`}
       >
         {/* Header */}
@@ -488,13 +488,13 @@ export default function LeadForm({
                 >
                   Shift Requirement
                 </label>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                   {shiftOptions.map((opt) => (
                     <button
                       key={opt.id}
                       type="button"
                       onClick={() => setFormData((p) => ({ ...p, shift: opt.id }))}
-                      className={`py-1.5 px-2 text-xs font-semibold rounded-lg transition-all border ${
+                      className={`py-2 px-1 text-[11px] sm:text-xs font-semibold rounded-lg transition-all border min-h-[38px] flex items-center justify-center text-center ${
                         formData.shift === opt.id
                           ? 'bg-gold-500 text-navy-950 border-gold-500 shadow-sm'
                           : variant === 'card'
@@ -502,7 +502,7 @@ export default function LeadForm({
                           : 'bg-navy-800/60 text-slate-300 border-white/10 hover:bg-navy-800'
                       }`}
                     >
-                      {opt.label}
+                      <span>{opt.label}</span>
                     </button>
                   ))}
                 </div>
@@ -565,7 +565,7 @@ export default function LeadForm({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3 px-4 rounded-xl font-bold font-poppins text-sm bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 shadow-soft-gold hover:shadow-lg hover:shadow-gold-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
+                className="w-full min-h-[48px] h-auto py-3 px-4 rounded-xl font-bold font-poppins text-sm bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 text-navy-950 shadow-soft-gold hover:shadow-lg hover:shadow-gold-500/25 hover:scale-[1.01] active:scale-[0.99] transition-all flex items-center justify-center gap-2 disabled:opacity-75 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
